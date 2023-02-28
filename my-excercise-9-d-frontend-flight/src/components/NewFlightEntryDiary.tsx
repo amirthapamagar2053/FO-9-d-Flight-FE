@@ -11,6 +11,7 @@ const NewFlightEntryDiary = (props: NewFlightEntryDiaryProps): JSX.Element => {
   const [visibility, setVisibility] = useState<Visibility | string>();
   const [weather, setWeather] = useState<Weather | string>();
   const [comment, setComment] = useState("");
+  const [notifications, setNotifications] = useState("");
 
   const diaryCreation = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -28,12 +29,20 @@ const NewFlightEntryDiary = (props: NewFlightEntryDiaryProps): JSX.Element => {
           ...prev,
           response.data,
         ])
-      );
+      )
+      .catch((error) => {
+        setNotifications(error.response.data);
+      });
   };
 
   return (
     <div>
       <h1>Add new entry</h1>
+      {notifications === "" ? (
+        notifications
+      ) : (
+        <p style={{ color: "red" }}>{notifications}</p>
+      )}
       <form onSubmit={diaryCreation}>
         <label>date</label>
         <input value={date} onChange={(event) => setDate(event.target.value)} />
