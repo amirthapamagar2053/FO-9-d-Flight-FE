@@ -44,22 +44,98 @@ const NewFlightEntryDiary = (props: NewFlightEntryDiaryProps): JSX.Element => {
         <p style={{ color: "red" }}>{notifications}</p>
       )}
       <form onSubmit={diaryCreation}>
-        <label>date</label>
-        <input value={date} onChange={(event) => setDate(event.target.value)} />
+        <label>
+          date
+          <input
+            type="date"
+            onChange={(event) => setDate(event.target.value)}
+          />
+        </label>
         <br />
-        <label>visibility</label>
-
-        <input
-          value={visibility}
-          onChange={(event) => setVisibility(event.target.value)}
-        />
+        <label>
+          visibility
+          <>
+            <input
+              type="radio"
+              name="poor"
+              value="poor"
+              checked={visibility === "poor"}
+              onChange={(event) => setVisibility(event.target.value)}
+            />
+            <label>poor</label>
+            <input
+              type="radio"
+              value="great"
+              checked={visibility === "great"}
+              name="great"
+              onChange={(event) => setVisibility(event.target.value)}
+            />
+            <label>great</label>
+            <input
+              type="radio"
+              value="ok"
+              checked={visibility === "ok"}
+              name="ok"
+              onChange={(event) => setVisibility(event.target.value)}
+            />
+            <label>ok</label>
+            <input
+              type="radio"
+              value="good"
+              name="good"
+              checked={visibility === "good"}
+              onChange={(event) => setVisibility(event.target.value)}
+            />
+            <label>good</label>
+          </>
+        </label>
         <br />
-        <label>weather</label>
+        <label>
+          weather{" "}
+          <>
+            <input
+              type="radio"
+              name="sunny"
+              value="sunny"
+              checked={weather === "sunny"}
+              onChange={(event) => setWeather(event.target.value)}
+            />
+            <label>sunny</label>
+            <input
+              type="radio"
+              value="cloudy"
+              checked={weather === "cloudy"}
+              name="cloudy"
+              onChange={(event) => setWeather(event.target.value)}
+            />
+            <label>cloudy</label>
+            <input
+              type="radio"
+              value="rainy"
+              checked={weather === "rainy"}
+              name="rainy"
+              onChange={(event) => setWeather(event.target.value)}
+            />
+            <label>rainy</label>
+            <input
+              type="radio"
+              value="stormy"
+              name="stormy"
+              checked={weather === "stormy"}
+              onChange={(event) => setWeather(event.target.value)}
+            />
+            <label>stormy</label>
+            <input
+              type="radio"
+              value="windy"
+              name="windy"
+              checked={weather === "windy"}
+              onChange={(event) => setWeather(event.target.value)}
+            />
+            <label>windy</label>
+          </>
+        </label>
 
-        <input
-          value={weather}
-          onChange={(event) => setWeather(event.target.value)}
-        />
         <br />
         <label>comment</label>
 
